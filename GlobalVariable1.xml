@@ -1,0 +1,26 @@
+<joblist>
+  <job>
+    <context>
+      <options preserveOrder='true'>
+        <option name='variable' />
+      </options>
+    </context>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <executionEnabled>true</executionEnabled>
+    <id>64026a3d-7a0c-43d8-ad2a-b8484928f33f</id>
+    <loglevel>INFO</loglevel>
+    <name>GlobalVariable1</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <plugins />
+    <scheduleEnabled>true</scheduleEnabled>
+    <schedules />
+    <sequence keepgoing='true' strategy='sequential'>
+      <command>
+        <exec>echo "${option.variable}"</exec>
+        <plugins />
+      </command>
+    </sequence>
+    <uuid>64026a3d-7a0c-43d8-ad2a-b8484928f33f</uuid>
+  </job>
+</joblist>

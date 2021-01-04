@@ -1,0 +1,52 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description><![CDATA[Diagram
+![Imgur](https://i.imgur.com/bOjUqPi.png)]]></description>
+    <executionEnabled>true</executionEnabled>
+    <id>b4164140-ba7c-48ee-b9dc-679cab9e5abe</id>
+    <loglevel>INFO</loglevel>
+    <name>GlobalVariable</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <plugins />
+    <scheduleEnabled>true</scheduleEnabled>
+    <schedules />
+    <sequence keepgoing='true' strategy='sequential'>
+      <command>
+        <exec>echo "hostname=$(hostname)"</exec>
+        <plugins>
+          <LogFilter type='key-value-data'>
+            <config>
+              <invalidKeyPattern>\s|\$|\{|\}|\\</invalidKeyPattern>
+              <logData>false</logData>
+              <regex>(.*)=(.*)</regex>
+            </config>
+          </LogFilter>
+          <LogFilter type='quiet-output'>
+            <config>
+              <loglevel>verbose</loglevel>
+              <matchLoglevel>all</matchLoglevel>
+              <quietMatch>true</quietMatch>
+            </config>
+          </LogFilter>
+        </plugins>
+      </command>
+      <command>
+        <step-plugin type='export-var'>
+          <configuration>
+            <entry key='export' value='hostname' />
+            <entry key='group' value='export' />
+            <entry key='value' value='${data.hostname*}' />
+          </configuration>
+        </step-plugin>
+      </command>
+      <command>
+        <jobref name='GlobalVariable1'>
+          <arg line='-variable ${export.hostname}' />
+          <uuid>64026a3d-7a0c-43d8-ad2a-b8484928f33f</uuid>
+        </jobref>
+      </command>
+    </sequence>
+    <uuid>b4164140-ba7c-48ee-b9dc-679cab9e5abe</uuid>
+  </job>
+</joblist>
